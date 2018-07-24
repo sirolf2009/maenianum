@@ -1,12 +1,12 @@
 package com.sirolf2009.maenianum.component
 
-import com.sirolf2009.gladiator.colloseum.trading.ColloseumBacktestResult
+import com.sirolf2009.commonwealth.trading.backtest.IBacktestResult
 import javafx.scene.control.Label
 import org.tbee.javafx.scene.layout.MigPane
 
 class BacktestDetails extends MigPane {
 	
-	new(ColloseumBacktestResult result) {
+	new(IBacktestResult result) {
 		add(new Label("Profit"))
 		add(new Label(String.valueOf(result.getProfits().sum())), "wrap")
 		add(new Label("Mean Profit"))
@@ -16,7 +16,9 @@ class BacktestDetails extends MigPane {
 		add(new Label("Mode Profit"))
 		add(new Label(String.valueOf(result.getProfits().getMode().orElse(null))), "wrap")
 		add(new Label("Max Drawdown"))
-		add(new Label(String.valueOf(result.getDrawdown().getMax().orElse(0))), "wrap")
+		add(new Label(String.valueOf(result.getMaxDrawdown().getMin().orElse(0))), "wrap")
+		add(new Label("Max Drawup"))
+		add(new Label(String.valueOf(result.getMaxDrawup().getMin().orElse(0))), "wrap")
 		add(new Label("# Trades"))
 		add(new Label(String.valueOf(result.getTrades().size())), "wrap")
 		
